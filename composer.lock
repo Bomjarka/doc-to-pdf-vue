@@ -85,16 +85,16 @@
         },
         {
             "name": "bomjarka/word-to-pdf-converter",
-            "version": "1.0.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:Bomjarka/word-to-pdf-converter.git",
-                "reference": "86b38914e1fda2cb03ad1b1ed3a95e2fda0e5905"
+                "reference": "07d9eb141588cc13d428cb80d51c7895a2f365ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Bomjarka/word-to-pdf-converter/zipball/86b38914e1fda2cb03ad1b1ed3a95e2fda0e5905",
-                "reference": "86b38914e1fda2cb03ad1b1ed3a95e2fda0e5905",
+                "url": "https://api.github.com/repos/Bomjarka/word-to-pdf-converter/zipball/07d9eb141588cc13d428cb80d51c7895a2f365ca",
+                "reference": "07d9eb141588cc13d428cb80d51c7895a2f365ca",
                 "shasum": ""
             },
             "require": {
@@ -118,10 +118,10 @@
             ],
             "description": "Package for converting docx to pdf",
             "support": {
-                "source": "https://github.com/Bomjarka/word-to-pdf-converter/tree/1.0.0",
+                "source": "https://github.com/Bomjarka/word-to-pdf-converter/tree/1.2.0",
                 "issues": "https://github.com/Bomjarka/word-to-pdf-converter/issues"
             },
-            "time": "2023-06-28T05:25:54+00:00"
+            "time": "2023-06-28T08:49:41+00:00"
         },
         {
             "name": "brick/math",
