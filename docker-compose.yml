@@ -1,9 +1,7 @@
 version: '3.8'
 
 services:
-  # Backend контейнер
   backend:
-    # Для установки нужных пакетов используем не чистый образ, а инструкции из конкретного файла Dockerfile
     build:
       context: .
       dockerfile: ./docker/backend/Dockerfile
@@ -13,27 +11,24 @@ services:
     tty: true
     working_dir: /var/www
     volumes:
-      - .:/var/www # Монтируем локальную папку в контейнер как /var/www
+      - .:/var/www
       - ./docker/backend/php.ini:/usr/local/etc/php/php.ini
     depends_on:
       - node
       - postgres
 
-  # Nginx контейнер для вебсервера
   nginx:
-    # Используем готовый образ для nginx контейнера
     image: nginx:alpine
     restart: unless-stopped
     tty: true
     ports:
-      - "80:80" # Внутренний порт контейнера пробрасываем на host машину
+      - "80:80"
     volumes:
-      - .:/var/www # Монтируем локальную папку в контейнер как /var/www
-      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/ # Передаем в контейнер конфигурационные файлы nginx
+      - .:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
     depends_on:
       - backend
 
-      # PostgreSQL контейнер
   postgres:
       image: postgres:latest
       restart: unless-stopped
@@ -50,7 +45,6 @@ services:
       healthcheck:
           test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_DATABASE}"]
 
-  # Для сборки js
   node:
     build:
       context: .
@@ -60,4 +54,4 @@ services:
       - "5173:5173"
     working_dir: /var/www
     volumes:
-      - .:/var/www # Монтируем локальную папку в контейнер как /var/www
+      - .:/var/www
