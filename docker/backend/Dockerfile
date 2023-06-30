@@ -1,5 +1,7 @@
 FROM php:8.0-fpm
 
+ARG DEV_LOCAL_UID
+ARG DEV_LOCAL_GID
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -33,7 +35,7 @@ RUN apt-get update && apt-get install -y \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Add user for laravel application
-RUN groupadd -g 1000 www && useradd -u 1000 -ms /bin/bash -g www www
+RUN groupadd -g $DEV_LOCAL_GID www && useradd -u $DEV_LOCAL_UID -ms /bin/bash -g www www
 
 # Change current user to www
 USER www

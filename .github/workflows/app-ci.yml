@@ -13,10 +13,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: Copy .env.example to .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-      - name: Get UID
-        run: id -u
-      - name: Get GID
-        run: id -g
+      - name: Set UID
+        run: sed -i "s/DEV_LOCAL_UID=1/DEV_LOCAL_UID="$(id -u)"/" .env
+      - name: Set GID
+        run: sed -i "s/DEV_LOCAL_GID=1/DEV_LOCAL_GID="$(id -u)"/" .env
       - name: Up container
         run: docker-compose up -d
       - name: Install Composer

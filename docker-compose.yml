@@ -3,6 +3,9 @@ version: '3.8'
 services:
     backend:
         build:
+            args:
+                DEV_LOCAL_UID: ${DEV_LOCAL_UID}
+                DEV_LOCAL_GID: ${DEV_LOCAL_GID}
             context: .
             dockerfile: ./docker/backend/Dockerfile
         extra_hosts:
