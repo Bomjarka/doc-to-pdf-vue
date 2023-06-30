@@ -26,7 +26,7 @@ jobs:
       - name: Database Migrations
         run: docker-compose exec -T backend bash -lc 'php artisan migrate:fresh'
       - name: Build frontend
-        run: docker-compose exec node /bin/bash -lc 'npm run build'
+        run: docker-compose exec -T node /bin/bash -lc 'npm run build'
       - name: PHPUnit
         run: docker-compose exec -T backend bash -lc './vendor/bin/phpunit tests/'
 
