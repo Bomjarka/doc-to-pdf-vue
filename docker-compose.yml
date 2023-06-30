@@ -48,7 +48,7 @@ services:
             test: [ "CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_DATABASE}" ]
 
     #    mysql:
-    #        image: mysql:5.7.22
+    #        image: mysql:latest
     #        restart: unless-stopped
     #        tty: true
     #        ports:

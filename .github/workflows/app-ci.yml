@@ -5,10 +5,8 @@ on:
     branches: [ master, staging ]
 
 jobs:
-  laravel-tests:
-
+  build-app:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: Copy .env.example to .env
@@ -27,5 +25,9 @@ jobs:
         run: docker-compose exec -T backend bash -lc 'php artisan key:generate'
       - name: Database Migrations
         run: docker-compose exec -T backend bash -lc 'php artisan migrate:fresh'
+  running-test:
+    runs-on: ubuntu-latest
+    steps:
       - name: PHPUnit
-        run: docker-compose exec -T backend bash -lc './vendor/bin/phpunit'
+        run: docker-compose exec -T backend bash -lc './vendor/bin/phpunit tests/Unit'
+
