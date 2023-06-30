@@ -22,6 +22,8 @@ RUN apt-get update && apt-get install -y \
     docker-php-ext-enable xdebug && \
     docker-php-ext-install pdo \
     pgsql pdo_pgsql \
+    mysqli \
+    pdo_mysql \
     mbstring zip exif pcntl && \
     docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql &&\
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
