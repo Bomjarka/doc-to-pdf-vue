@@ -25,9 +25,8 @@ jobs:
         run: docker-compose exec -T backend bash -lc 'php artisan key:generate'
       - name: Database Migrations
         run: docker-compose exec -T backend bash -lc 'php artisan migrate:fresh'
-  running-test:
-    runs-on: ubuntu-latest
-    steps:
+      - name: Build frontend
+        run: docker-compose exec node /bin/bash -lc 'npm run build'
       - name: PHPUnit
-        run: docker-compose exec -T backend bash -lc './vendor/bin/phpunit tests/Unit'
+        run: docker-compose exec -T backend bash -lc './vendor/bin/phpunit tests/'
 
