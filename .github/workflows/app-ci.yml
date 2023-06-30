@@ -16,4 +16,4 @@ jobs:
       - name: Up container
         run: docker-compose up -d
       - name: PHPUnit
-        run: docker-compose exec - T backend bash -lc './vendor/bin/phpunit'
+        run: docker-compose exec -T backend bash -lc './vendor/bin/phpunit'
