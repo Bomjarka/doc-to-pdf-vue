@@ -18,7 +18,7 @@ class DocumentController extends Controller
     {
         $file = $request->file('file');
         if ($file) {
-            $documentService->saveDocument($file);
+            $file->storeAs('', $file->getClientOriginalName(), 'documents');
 
             return $documentService->getVariables($file->getClientOriginalName());
         }
