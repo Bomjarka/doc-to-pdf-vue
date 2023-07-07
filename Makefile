@@ -1,13 +1,12 @@
 APP_CONTAINER_NAME := backend
 LOCAL_UID := $(shell id -u)
 LOCAL_GID := $(shell id -g)
-
-include .env
-
+DOMAIN_EXISTS := $(shell grep -i "127.0.0.1 doc-to-pdf-vue3-app.local" /etc/hosts)
 install: prepare-env build-clean up prepare-backend
 
 prepare-env: ## Подготовка окружения
-			cp .env.example .env
+			@if [ "$(DOMAIN_EXISTS)" != "127.0.0.1 doc-to-pdf-vue3-app.local" ]; then echo "127.0.0.1 doc-to-pdf-vue3-app.local" | sudo tee -a /etc/hosts; fi; \
+			cp .env.example .env; \
 			sed -i "s/DEV_LOCAL_UID=1/DEV_LOCAL_UID="${LOCAL_UID}"/" .env; \
             sed -i "s/DEV_LOCAL_GID=1/DEV_LOCAL_GID="${LOCAL_GID}"/" .env; \
             sed -i "s/DB_HOST=db/DB_HOST=postgres/" .env; \

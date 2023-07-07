@@ -5,7 +5,6 @@ This application allows users to upload doc/docx files with variables, set value
 ### Instaliation
 
 - clone project
-- add http://doc-to-pdf-vue3-app.local/ to hosts file
 - ```shell
   make install
     ```
