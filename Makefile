@@ -15,7 +15,7 @@ prepare-env: ## Подготовка окружения
 prepare-backend: ## Подготовка приложения
 			docker-compose exec $(APP_CONTAINER_NAME) composer install
 			docker-compose exec $(APP_CONTAINER_NAME) php artisan key:generate
-			docker-compose exec $(APP_CONTAINER_NAME) php artisan migrate
+			docker-compose exec $(APP_CONTAINER_NAME) php artisan migrate:fresh
 			docker-compose exec $(APP_CONTAINER_NAME) php artisan optimize
 build: ## Сборка контейнеров
 		$(shell docker-compose build)
@@ -31,3 +31,5 @@ down: ## Отключение контейнеров
 
 shell: ## Запуск bash в контейнере
 		docker-compose exec $(APP_CONTAINER_NAME) bash
+
+
