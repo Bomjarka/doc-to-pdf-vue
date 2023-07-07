@@ -9,5 +9,5 @@ This application allows users to upload doc/docx files with variables, set value
 - ```shell
   make install
     ```
-- open http://doc-to-pdf-vue3-app.local/ or http://localhost:DOCKER_HTTP_PORT
+- open http://doc-to-pdf-vue3-app.local:DOCKER_HTTP_PORT or http://localhost:DOCKER_HTTP_PORT
 
